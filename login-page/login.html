@@ -56,7 +56,7 @@
 
      <!--change class name fieldPt for js-->
       <div class="fieldPt">
-          <input type="password" name="password1" placeholder="Create Password" required id="pswrd" onkeyup="checkpassword(this.value)">
+          <input type="password" name="password1" placeholder="Create Password" required id="pswrd" >
           <span id="toggleBtn"></span>
       </div>
       <!-- add requried alert show list-->
@@ -73,9 +73,11 @@
 
       <!--change class name fieldPt for js-->
       <div class="fieldPt">
-        <input type="password" name="password2" placeholder="Confirm Password" required  id="pswrd2">
+        <input type="password" name="password2" placeholder="Confirm Password" required  id="pswrd2" >
         <span id="toggleBtn2"></span>
     </div>
+
+    <p class="msg" id="msg"></p>
 
 
 
@@ -129,4 +131,6 @@
   <script src="{% static "js/script.js" %}" defer></script>
   <script src="{% static "js/error.js" %}" defer></script> -->
 </body>
+
+
 </html>
