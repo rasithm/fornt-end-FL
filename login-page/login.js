@@ -3,6 +3,13 @@ let toggleBtn = document.getElementById('toggleBtn')
 let msg = document.getElementById('msg');
 let toggleBtn2 = document.getElementById('toggleBtn2')
 let pswrd2= document.getElementById('pswrd2')
+let signupbtn = document.getElementById('signupbtn')
+let phoneNumber = document.getElementById('phone').value
+let ph = document.getElementById('ph')
+
+
+
+
 
 // show hide password
 toggleBtn.onclick = function(){
@@ -81,8 +88,18 @@ function validatePasswordComplexity(data){
     }else{
         minilength.classList.remove('valid')
     }
+
+
+    if(lower.test(data) && upper.test(data) && number.test(data) && special.test(data) && length.test(data)){
+        signupbtn.setAttribute('type' , 'submit')
+    }else{
+        signupbtn.setAttribute('type' , 'text')
+        
+    }
     
 }
+
+
 
 
 // Event listener for password input
@@ -99,9 +116,14 @@ function checkPasswordMatch() {
         if (pswrdValue === pswrd2Value) {
             msg.textContent = "Password match";
             msg.style.backgroundColor = "#3ae374";
+            signupbtn.setAttribute('type' , 'submit')
+            
+
+
         } else {
             msg.textContent = "Passwords doesn't match";
             msg.style.backgroundColor = "#ff4d4d";
+            signupbtn.setAttribute('type' , 'text')
         }
     } else {
         msg.textContent = "password"; // Clear message if passwords are empty
@@ -120,7 +142,33 @@ pswrd2.addEventListener('input', checkPasswordMatch);
 // Debugging helpers
 console.log("Event listeners added to pswrdField and pswrd2Field for real-time checks.");
 
+// logic about phone number valid or invalid
 
+function validatePhoneNumber() {
+    let cleanedPhoneNumber = phoneNumber.replace(/\D/g, '')
+
+
+    // check 10 digit valid or invalid
+    if(cleanedPhoneNumber.length !== 10){
+        ph.textContent = "invalid"
+        return false
+    }
+
+    //check first digit not '0' and '1'
+    if(checkPasswordMatch.charAt(0) === '0' || checkPasswordMatch.charAt(0) === '1'){
+        ph.textContent = "invalid"
+        return false
+    }
+
+
+    //check if phone number contain only digit
+    if(!/^\d+$/.test(cleanedPhoneNumber)){
+        ph.textContent = "invalid"
+        return false
+    }
+
+    
+}
 
 
 

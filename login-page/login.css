@@ -157,7 +157,34 @@ form {
     width: 370px;
     z-index: 1;
     position: relative;
+    background-color: #51c051;
+    border: none;
+    color: #fff;
+    padding-left: 0;
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  form .btn input[type=""]{
+    width: 370px;
+    z-index: 1;
+    position: relative;
     background-color: #141B5F;
+    border: none;
+    color: #fff;
+    padding-left: 0;
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  form .btn input[type="text"]{
+    width: 370px;
+    z-index: 1;
+    position: relative;
+    background-color: #df1111;
     border: none;
     color: #fff;
     padding-left: 0;
@@ -334,7 +361,7 @@ form {
   width: 34px;
   height: 34px;
   
-  background-color: rgba(0, 0, 0, 0.05);
+  /*background-color: rgba(0, 0, 0, 0.05);*/
   border-radius: 50%;
   cursor: pointer;
   display: flex;
@@ -349,7 +376,7 @@ form {
   width: 34px;
   height: 34px;
   
-  background-color: rgba(0, 0, 0, 0.05);
+  /*background-color: rgba(0, 0, 0, 0.05);*/
   border-radius: 50%;
   cursor: pointer;
   display: flex;
