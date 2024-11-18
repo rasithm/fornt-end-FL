@@ -145,30 +145,23 @@ console.log("Event listeners added to pswrdField and pswrd2Field for real-time c
 // logic about phone number valid or invalid
 
 function validatePhoneNumber() {
-    let cleanedPhoneNumber = phoneNumber.replace(/\D/g, '')
+    let phoneInput = document.getElementById('phone'); // Get the actual input element
+    let phoneNumber = phoneInput.value.replace(/\D/g, ''); // Clean input to remove non-digits
 
-
-    // check 10 digit valid or invalid
-    if(cleanedPhoneNumber.length !== 10){
-        ph.textContent = "invalid"
-        return false
+    // Check if it is a 10-digit number
+    if (phoneNumber.length === 10 && phoneNumber.charAt(0) !== '0' && phoneNumber.charAt(0) !== '1') {
+        ph.textContent = "valid";
+        signupbtn.setAttribute('type', 'submit');
+        ph.classList.add("valid")
+    } else {
+        ph.textContent = "invalid";
+        signupbtn.setAttribute('type', 'text');
+        ph.classList.remove("valid")
     }
-
-    //check first digit not '0' and '1'
-    if(checkPasswordMatch.charAt(0) === '0' || checkPasswordMatch.charAt(0) === '1'){
-        ph.textContent = "invalid"
-        return false
-    }
-
-
-    //check if phone number contain only digit
-    if(!/^\d+$/.test(cleanedPhoneNumber)){
-        ph.textContent = "invalid"
-        return false
-    }
-
-    
 }
+
+// Event listener for real-time feedback
+document.getElementById('phone').addEventListener('input', validatePhoneNumber);
 
 
 
