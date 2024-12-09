@@ -154,14 +154,17 @@ function validatePhoneNumber() {
         ph.style.display = "inline-block";
         ph.classList.add("valid");
         ph.classList.remove("invalid");
-        center.style.marginTop = "55px"; // Adjust margin for valid message
+        center.style.marginTop = "55px";
+        
+        signupbtn.setAttribute("type", "submit"); // Adjust margin for valid message
     } else {
         if (phoneInput.length === 0) {
             // Clear message and reset margin if empty
             ph.textContent = "";
             ph.style.backgroundColor = "transparent";
             ph.style.display = "none";
-            center.style.marginTop = "0px"; // Reset margin to 0
+            center.style.marginTop = "0px";
+            signupbtn.setAttribute("type", "button"); // Reset margin to 0
         } else {
             // Invalid phone number
             ph.textContent = "Invalid phone number";
@@ -169,7 +172,8 @@ function validatePhoneNumber() {
             ph.style.display = "inline-block";
             ph.classList.add("invalid");
             ph.classList.remove("valid");
-            center.style.marginTop = "55px"; // Adjust margin for invalid message
+            center.style.marginTop = "55px";
+            signupbtn.setAttribute("type", "button"); // Adjust margin for invalid message
         }
     }
 }
