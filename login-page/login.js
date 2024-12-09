@@ -10,7 +10,6 @@ let ph = document.getElementById('ph')
 
 
 
-
 // show hide password
 toggleBtn.onclick = function(){
     if(pswrd.type == 'password'){
@@ -102,41 +101,38 @@ function validatePasswordComplexity(data){
 
 
 
-// Event listener for password input
-pswrd.addEventListener('input', function() {
-    validatePasswordComplexity(pswrd.value); // Call the function for complexity checks
-});
+
 
 // Function to check if passwords match
 function checkPasswordMatch() {
-    let pswrdValue = pswrd.value; // Get current value
-    let pswrd2Value = pswrd2.value; // Get current value
+    let pswrdValue = pswrd.value.trim();
+    let pswrd2Value = pswrd2.value.trim();
 
-    if (pswrdValue.length !== 0) {
-        if (pswrdValue === pswrd2Value) {
-            msg.textContent = "Password match";
-            msg.style.backgroundColor = "#3ae374";
-            signupbtn.setAttribute('type' , 'submit')
-            msg.classList.add("msg")
-            
+    if (pswrdValue === "" && pswrd2Value === "") {
+        msg.textContent = "";
+        msg.style.backgroundColor = "transparent";
+        msg.classList.add('msg')
+        signupbtn.setAttribute("type", "button");
+        return;
+    }
 
-
-        } else {
-            msg.textContent = "Passwords doesn't match";
-            msg.classList.add("msg")
-            msg.style.backgroundColor = "#ff4d4d";
-            signupbtn.setAttribute('type' , 'button')
-        }
+    if (pswrdValue === pswrd2Value) {
+        msg.textContent = "Password match";
+        msg.style.backgroundColor = "#3ae374";
+        msg.classList.add(' msg')
+        
+        signupbtn.setAttribute("type", "submit");
     } else {
-        msg.style.display = "none" // Clear message if passwords are empty
-        msg.style.backgroundColor = "transparent"; // Reset background
+        msg.textContent = "Passwords don't match";
+        msg.style.backgroundColor = "#ff4d4d";
+        msg.classList.add('msg')
+        signupbtn.setAttribute("type", "button");
     }
 }
 
-// Add event listeners for real-time feedback
-pswrd.addEventListener('input', function() {
+pswrd.addEventListener('input', function () {
     validatePasswordComplexity(pswrd.value);
-    checkPasswordMatch(); // Also check matching on pswrdField change
+    checkPasswordMatch();
 });
 
 pswrd2.addEventListener('input', checkPasswordMatch);
@@ -147,25 +143,33 @@ console.log("Event listeners added to pswrdField and pswrd2Field for real-time c
 // logic about phone number valid or invalid
 
 function validatePhoneNumber() {
-    let phoneInput = document.getElementById('phone'); // Get the actual input element
-    let phoneNumber = phoneInput.value.replace(/\D/g, ''); // Clean input to remove non-digits
+    let phoneInput = document.getElementById('phone').value.replace(/\D/g, ''); // Remove non-digits
+    let ph = document.getElementById('ph');
+    let center = document.getElementById('center');
 
-    // Check if it is a 10-digit number
-    if (phoneNumber.length === 10 && phoneNumber.charAt(0) !== '0' && phoneNumber.charAt(0) !== '1') {
-        ph.textContent = "  Valid";
-        signupbtn.setAttribute('type', 'submit');
-        ph.classList.add("valid")
-        ph.classList.remove("invalid")
-        ph.style.backgroundColor = "#3ae374"
+    if (phoneInput.length === 10 && !['0', '1'].includes(phoneInput.charAt(0))) {
+        // Valid phone number
+        ph.textContent = "Valid phone number";
+        ph.style.backgroundColor = "#3ae374";
+        ph.style.display = "inline-block";
+        ph.classList.add("valid");
+        ph.classList.remove("invalid");
+        center.style.marginTop = "55px"; // Adjust margin for valid message
     } else {
-        if(phoneNumber.length == 0){
-            ph.style.display = "none"
-        }else{
-            ph.textContent = "Invalid";
-            signupbtn.setAttribute('type', 'button');
-            ph.classList.remove("valid")
-            ph.classList.add("invalid")
-            ph.style.backgroundColor = "#ff4d4d"
+        if (phoneInput.length === 0) {
+            // Clear message and reset margin if empty
+            ph.textContent = "";
+            ph.style.backgroundColor = "transparent";
+            ph.style.display = "none";
+            center.style.marginTop = "0px"; // Reset margin to 0
+        } else {
+            // Invalid phone number
+            ph.textContent = "Invalid phone number";
+            ph.style.backgroundColor = "#ff4d4d";
+            ph.style.display = "inline-block";
+            ph.classList.add("invalid");
+            ph.classList.remove("valid");
+            center.style.marginTop = "55px"; // Adjust margin for invalid message
         }
     }
 }

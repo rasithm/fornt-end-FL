@@ -274,6 +274,7 @@ form {
   display: flex;
   /* align-content: center; */
   justify-content: center;
+  
 }
 
 /* make style for requried password*/
@@ -418,6 +419,7 @@ form .fieldPt input:focus::placeholder{
   padding: 5px 20px;
   margin-left: 45px;
   border-radius: 10px;
+  
   
 }
 
