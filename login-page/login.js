@@ -93,7 +93,7 @@ function validatePasswordComplexity(data){
     if(lower.test(data) && upper.test(data) && number.test(data) && special.test(data) && length.test(data)){
         signupbtn.setAttribute('type' , 'submit')
     }else{
-        signupbtn.setAttribute('type' , 'text')
+        signupbtn.setAttribute('type' , 'button')
         
     }
     
@@ -117,16 +117,18 @@ function checkPasswordMatch() {
             msg.textContent = "Password match";
             msg.style.backgroundColor = "#3ae374";
             signupbtn.setAttribute('type' , 'submit')
+            msg.classList.add("msg")
             
 
 
         } else {
             msg.textContent = "Passwords doesn't match";
+            msg.classList.add("msg")
             msg.style.backgroundColor = "#ff4d4d";
-            signupbtn.setAttribute('type' , 'text')
+            signupbtn.setAttribute('type' , 'button')
         }
     } else {
-        msg.textContent = "password"; // Clear message if passwords are empty
+        msg.style.display = "none" // Clear message if passwords are empty
         msg.style.backgroundColor = "transparent"; // Reset background
     }
 }
@@ -150,13 +152,21 @@ function validatePhoneNumber() {
 
     // Check if it is a 10-digit number
     if (phoneNumber.length === 10 && phoneNumber.charAt(0) !== '0' && phoneNumber.charAt(0) !== '1') {
-        ph.textContent = "valid";
+        ph.textContent = "  Valid";
         signupbtn.setAttribute('type', 'submit');
         ph.classList.add("valid")
+        ph.classList.remove("invalid")
+        ph.style.backgroundColor = "#3ae374"
     } else {
-        ph.textContent = "invalid";
-        signupbtn.setAttribute('type', 'text');
-        ph.classList.remove("valid")
+        if(phoneNumber.length == 0){
+            ph.style.display = "none"
+        }else{
+            ph.textContent = "Invalid";
+            signupbtn.setAttribute('type', 'button');
+            ph.classList.remove("valid")
+            ph.classList.add("invalid")
+            ph.style.backgroundColor = "#ff4d4d"
+        }
     }
 }
 
